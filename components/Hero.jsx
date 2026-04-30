@@ -73,7 +73,7 @@ export default function HeroSection() {
         .hero-root {
           position: relative;
           width: 100%;
-          height: 100svh;
+          height: 80svh;
           min-height: 600px;
           overflow: hidden;
           background: #0a0a0a;
@@ -469,7 +469,7 @@ export default function HeroSection() {
           .slider-dots { right: 48px; }
         }
         @media (max-width: 768px) {
-          .hero-content { padding: 0 24px 56px; }
+          .hero-content { padding: 0 24px 230px; }
           .hero-stats { display: none; }
           .hero-cta-row { gap: 12px; }
           .btn-primary, .btn-secondary { padding: 14px 22px; font-size: 13px; }
@@ -478,7 +478,7 @@ export default function HeroSection() {
         }
         @media (max-width: 480px) {
           .hero-heading { font-size: 42px; }
-          .hero-content { padding: 0 20px 48px; }
+          .hero-content { padding: 0 20px 100px; }
           .slider-nav-prev { left: 10px; }
           .slider-nav-next { right: 10px; }
         }

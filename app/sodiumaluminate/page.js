@@ -167,15 +167,17 @@ export default function SodiumAluminatePage() {
         .hero-image {
           position: relative;
           z-index: 1;
-          height: 500px;
-          background: linear-gradient(135deg, rgba(218,37,42,0.2) 0%, rgba(218,37,42,0.05) 100%);
+          width: 100%;
+          max-width: 350px;
+          height: 400px;
+          // background: linear-gradient(135deg, rgba(218,37,42,0.2) 0%, rgba(218,37,42,0.05) 100%);
           border-radius: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 1px solid rgba(218,37,42,0.3);
           animation: slideInRight 0.8s ease-out;
           overflow: hidden;
+          margin: 0 auto;
         }
 
         .hero-image-img {
@@ -653,7 +655,7 @@ export default function SodiumAluminatePage() {
         </div>
         <div className="hero-image">
           <Image
-            src="/Sodium-Aluminate.jpg"
+            src="/sodium-Aluminate.png"
             alt="Sodium Aluminate Product"
             fill
             style={{ objectFit: "cover" }}

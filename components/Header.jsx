@@ -179,6 +179,15 @@ export default function Navbar() {
         .nav-item {
           position: relative;
         }
+        .nav-item::after {
+          content: '';
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          height: 16px;
+          pointer-events: auto;
+        }
         .nav-btn {
           display: flex;
           align-items: center;
@@ -672,7 +681,11 @@ export default function Navbar() {
                   </button>
 
                   {item.categories && (
-                    <div className={`dropdown-panel wide${activeDropdown === item.label ? " open" : ""}`}>
+                    <div 
+                      className={`dropdown-panel wide${activeDropdown === item.label ? " open" : ""}`}
+                      onMouseEnter={() => setActiveDropdown(item.label)}
+                      onMouseLeave={() => setActiveDropdown(null)}
+                    >
                       <div className="panel-header">Browse by category</div>
                       <div className="categories-grid">
                         {item.categories.map((cat) => (
