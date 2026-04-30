@@ -5,44 +5,64 @@ import { Menu, X, ChevronDown, Search, Globe, ArrowRight } from "lucide-react";
 import NextImage from "next/image";
 
 const NAV_ITEMS = [
-    {
-        label: "Markets",
-        dropdown: [
-            { label: "Automotive", desc: "Precision parts for vehicles" },
-            { label: "Aerospace", desc: "High-performance components" },
-            { label: "Industrial", desc: "Heavy-duty solutions" },
-            { label: "Electronics", desc: "Micro & nano engineering" },
+  { label: "Home", href: "/" },
+  {
+    label: "Products",
+    categories: [
+      {
+        title: "Alumina Trihydrate (ATH)",
+        items: [
+          { label: "Sodium Aluminate", desc: "High-purity ATH powders", href: "/sodiumaluminate" },
+          { label: "Fire Retardant Alumina Trihydrate", desc: "Thermal & abrasive grades", href: "#" },
+          { label: "Specialty Alumina", desc: "Custom particle sizes", href: "#" },
         ],
-    },
-    { label: "Products" },
-    { label: "Technical Resources" },
-    { label: "About Us" },
-    { label: "What's New" },
-    { label: "Careers" },
+      },
+      {
+        title: "Industry Solutions",
+        items: [
+          { label: "Aerospace", desc: "High-performance components", href: "#" },
+          { label: "Industrial", desc: "Heavy-duty applications", href: "#" },
+          { label: "Electronics", desc: "Micro & nano engineering", href: "#", badge: "NEW" },
+        ],
+      },
+      {
+        title: "By Application",
+        items: [
+          { label: "Flame Retardants", desc: "FR filler systems", href: "#" },
+          { label: "Polishing & Abrasives", desc: "Surface finish solutions", href: "#" },
+          { label: "Ceramics", desc: "Structural & refractory", href: "#" },
+        ],
+      },
+    ],
+  },
+  { label: "Contact", href: "#" },
+  { label: "About Us", href: "#" },
+  { label: "Blog", href: "#" },
+  { label: "Careers", href: "#" },
 ];
 
 export default function Navbar() {
-    const [mobileOpen, setMobileOpen] = useState(false);
-    const [activeDropdown, setActiveDropdown] = useState(null);
-    const [searchOpen, setSearchOpen] = useState(false);
-    const [searchVal, setSearchVal] = useState("");
-    const [scrolled, setScrolled] = useState(false);
-    const [mobileExpanded, setMobileExpanded] = useState(null);
-    const searchRef = useRef(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchVal, setSearchVal] = useState("");
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState(null);
+  const searchRef = useRef(null);
 
-    useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 12);
-        window.addEventListener("scroll", onScroll);
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-    useEffect(() => {
-        if (searchOpen) searchRef.current?.focus();
-    }, [searchOpen]);
+  useEffect(() => {
+    if (searchOpen) searchRef.current?.focus();
+  }, [searchOpen]);
 
-    return (
-        <>
-            <style>{`
+  return (
+    <>
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700&display=swap');
 
         :root {
@@ -147,51 +167,6 @@ export default function Navbar() {
           flex-shrink: 0;
           text-decoration: none;
         }
-        .logo-mark {
-          width: 38px;
-          height: 38px;
-          background: var(--brand);
-          border-radius: 8px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-          overflow: hidden;
-        }
-        .logo-mark::before {
-          content: '';
-          position: absolute;
-          top: -10px; right: -10px;
-          width: 28px; height: 28px;
-          background: rgba(255,255,255,0.15);
-          border-radius: 50%;
-        }
-        .logo-mark svg {
-          width: 20px; height: 20px;
-          fill: white;
-          position: relative;
-          z-index: 1;
-        }
-        .logo-text {
-          display: flex;
-          flex-direction: column;
-          line-height: 1;
-        }
-        .logo-name {
-          font-family: 'Playfair Display', serif;
-          font-size: 18px;
-          font-weight: 700;
-          color: var(--ink);
-          letter-spacing: -0.01em;
-        }
-        .logo-tagline {
-          font-size: 9.5px;
-          font-weight: 500;
-          color: var(--brand);
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          margin-top: 2px;
-        }
 
         /* Desktop links */
         .desktop-links {
@@ -231,7 +206,7 @@ export default function Navbar() {
         }
         .nav-btn.active svg { transform: rotate(180deg); color: var(--brand); }
 
-        /* Dropdown */
+        /* Dropdown base */
         .dropdown-panel {
           position: absolute;
           top: calc(100% + 12px);
@@ -240,13 +215,14 @@ export default function Navbar() {
           background: var(--surface);
           border: 1px solid var(--border);
           border-radius: 14px;
-          padding: 8px;
+          padding: 10px;
           min-width: 240px;
           box-shadow: var(--shadow-lg);
           opacity: 0;
           visibility: hidden;
           transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
           pointer-events: none;
+          z-index: 100;
         }
         .dropdown-panel::before {
           content: '';
@@ -265,47 +241,115 @@ export default function Navbar() {
           transform: translateX(-50%) translateY(0);
           pointer-events: auto;
         }
+
+        /* Wide dropdown for categories */
+        .dropdown-panel.wide {
+          min-width: 580px;
+          left: 0;
+          transform: translateX(-30%) translateY(8px);
+        }
+        .dropdown-panel.wide.open {
+          transform: translateX(-30%) translateY(0);
+        }
+        .dropdown-panel.wide::before {
+          left: 32%;
+        }
+
+        .panel-header {
+          font-size: 11px;
+          font-weight: 600;
+          color: var(--ink-soft);
+          letter-spacing: 0.09em;
+          text-transform: uppercase;
+          padding: 4px 8px 10px;
+          border-bottom: 1px solid var(--border);
+          margin-bottom: 8px;
+        }
+        .categories-grid {
+          display: flex;
+          gap: 0;
+        }
+        .cat-col {
+          flex: 1;
+          padding: 0 4px;
+          border-right: 1px solid var(--border);
+        }
+        .cat-col:last-child { border-right: none; }
+        .cat-title {
+          font-size: 11px;
+          font-weight: 600;
+          color: var(--ink-soft);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          padding: 4px 10px 8px;
+        }
+
+        /* Dropdown items */
         .dropdown-item {
           display: flex;
           align-items: flex-start;
-          gap: 12px;
-          padding: 10px 12px;
-          border-radius: 9px;
+          gap: 10px;
+          padding: 8px 10px;
+          border-radius: 8px;
           cursor: pointer;
           transition: background 0.15s;
         }
         .dropdown-item:hover { background: var(--surface-alt); }
-        .dropdown-item:hover .drop-arrow { opacity: 1; transform: translateX(0); }
-        .drop-icon {
-          width: 34px; height: 34px;
-          border-radius: 8px;
-          background: var(--brand-light);
-          display: flex;
-          align-items: center;
-          justify-content: center;
+        .dropdown-item:hover .drop-dot { opacity: 1; }
+        .drop-dot {
+          width: 5px; height: 5px;
+          border-radius: 50%;
+          background: var(--brand);
+          opacity: 0.35;
           flex-shrink: 0;
+          margin-top: 6px;
+          transition: opacity 0.15s;
         }
-        .drop-icon svg { color: var(--brand); }
-        .drop-text {}
         .drop-label {
           font-size: 13.5px;
-          font-weight: 600;
+          font-weight: 500;
           color: var(--ink);
           display: flex;
           align-items: center;
           gap: 6px;
         }
-        .drop-arrow {
-          opacity: 0;
-          transform: translateX(-4px);
-          transition: all 0.18s ease;
+        .drop-badge {
+          font-size: 10px;
+          font-weight: 600;
+          background: var(--brand-light);
           color: var(--brand);
+          padding: 2px 6px;
+          border-radius: 20px;
+          letter-spacing: 0.04em;
         }
         .drop-desc {
           font-size: 12px;
           color: var(--ink-soft);
           margin-top: 1px;
         }
+
+        .panel-footer {
+          border-top: 1px solid var(--border);
+          margin-top: 8px;
+          padding: 10px 8px 4px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .footer-link {
+          font-size: 13px;
+          font-weight: 500;
+          color: var(--brand);
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          background: none;
+          border: none;
+          font-family: 'DM Sans', sans-serif;
+          transition: color 0.2s;
+        }
+        .footer-link:hover { color: var(--brand-dark); }
 
         /* Right actions */
         .nav-actions {
@@ -316,7 +360,7 @@ export default function Navbar() {
           flex-shrink: 0;
         }
 
-        /* Search bar */
+        /* Search */
         .search-wrap {
           display: flex;
           align-items: center;
@@ -330,10 +374,7 @@ export default function Navbar() {
           transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s;
           opacity: 0;
         }
-        .search-expand.open {
-          width: 220px;
-          opacity: 1;
-        }
+        .search-expand.open { width: 220px; opacity: 1; }
         .search-input {
           width: 100%;
           border: 1.5px solid var(--border);
@@ -442,7 +483,7 @@ export default function Navbar() {
           max-height: 0;
           transition: max-height 0.38s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .mobile-panel.open { max-height: 700px; }
+        .mobile-panel.open { max-height: 800px; }
         .mobile-inner {
           padding: 16px 24px 24px;
           display: flex;
@@ -495,14 +536,22 @@ export default function Navbar() {
         .mobile-sub {
           overflow: hidden;
           max-height: 0;
-          transition: max-height 0.28s ease;
+          transition: max-height 0.3s ease;
         }
-        .mobile-sub.open { max-height: 300px; }
+        .mobile-sub.open { max-height: 600px; }
+        .mobile-cat-title {
+          font-size: 11px;
+          font-weight: 600;
+          color: var(--ink-soft);
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          padding: 10px 14px 4px 22px;
+        }
         .mobile-sub-item {
           display: flex;
           align-items: center;
           gap: 10px;
-          padding: 10px 14px 10px 22px;
+          padding: 9px 14px 9px 22px;
           font-size: 14px;
           color: var(--ink-mid);
           cursor: pointer;
@@ -515,7 +564,7 @@ export default function Navbar() {
           border-radius: 50%;
           background: var(--brand);
           flex-shrink: 0;
-          opacity: 0.5;
+          opacity: 0.4;
         }
         .mobile-sub-item:hover { background: var(--brand-light); color: var(--brand); }
         .mobile-sub-item:hover::before { opacity: 1; }
@@ -571,175 +620,209 @@ export default function Navbar() {
         }
       `}</style>
 
-            <div className="navbar-root">
-                {/* Utility bar */}
-                <div className={`utility-bar${scrolled ? " scrolled" : ""}`}>
-                    <div className="utility-inner">
-                        <div className="utility-left">
-                            <div className="utility-dot" />
-                            Global operations across 40+ countries
-                        </div>
-                        <div className="utility-right">
-                            <a className="utility-link" href="#">Contact Sales</a>
-                            <a className="utility-link" href="#">Partner Portal</a>
-                            <a className="utility-link" href="#">
-                                <Globe size={12} /> Global Sites
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Main nav */}
-                <nav className={`nav-main${scrolled ? " scrolled" : ""}`}>
-                    <div className="nav-inner">
-
-                        <a className="logo-wrap" href="#">
-                            
-                                <NextImage
-                                    src="/logo.webp"
-                                    alt="Logo"
-                                    width={200}
-                                    height={200}
-                                    style={{ objectFit: "contain" }}
-                                    priority
-                                />
-                        
-                        </a>
-
-                        {/* Desktop links */}
-                        <div className="desktop-links">
-                            {NAV_ITEMS.map((item) => (
-                                <div
-                                    key={item.label}
-                                    className="nav-item"
-                                    onMouseEnter={() => item.dropdown && setActiveDropdown(item.label)}
-                                    onMouseLeave={() => setActiveDropdown(null)}
-                                >
-                                    <button
-                                        className={`nav-btn${activeDropdown === item.label ? " active" : ""}`}
-                                    >
-                                        {item.label}
-                                        {item.dropdown && <ChevronDown size={14} />}
-                                    </button>
-
-                                    {item.dropdown && (
-                                        <div className={`dropdown-panel${activeDropdown === item.label ? " open" : ""}`}>
-                                            {item.dropdown.map((sub) => (
-                                                <div className="dropdown-item" key={sub.label}>
-                                                    <div className="drop-icon">
-                                                        <ArrowRight size={14} />
-                                                    </div>
-                                                    <div className="drop-text">
-                                                        <div className="drop-label">
-                                                            {sub.label}
-                                                            <ArrowRight size={12} className="drop-arrow" />
-                                                        </div>
-                                                        <div className="drop-desc">{sub.desc}</div>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Actions */}
-                        <div className="nav-actions">
-                            {/* Search */}
-                            <div className="search-wrap">
-                                <div className={`search-expand${searchOpen ? " open" : ""}`}>
-                                    <input
-                                        ref={searchRef}
-                                        className="search-input"
-                                        type="text"
-                                        placeholder="Search products, resources…"
-                                        value={searchVal}
-                                        onChange={(e) => setSearchVal(e.target.value)}
-                                        onKeyDown={(e) => e.key === "Escape" && setSearchOpen(false)}
-                                    />
-                                    <button className="search-submit">
-                                        <Search size={14} />
-                                    </button>
-                                </div>
-                                <button
-                                    className={`icon-btn${searchOpen ? " active" : ""}`}
-                                    onClick={() => setSearchOpen(!searchOpen)}
-                                    aria-label="Toggle search"
-                                >
-                                    {searchOpen ? <X size={17} /> : <Search size={17} />}
-                                </button>
-                            </div>
-
-                            {/* Language */}
-                            <button className="lang-btn">
-                                <Globe size={14} />
-                                EN
-                            </button>
-
-                            {/* CTA */}
-                            <button className="cta-btn">
-                                Get a Quote
-                                <ArrowRight size={14} />
-                            </button>
-                        </div>
-
-                        {/* Mobile toggle */}
-                        <button
-                            className="mobile-toggle"
-                            onClick={() => setMobileOpen(!mobileOpen)}
-                            aria-label="Toggle menu"
-                        >
-                            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-                        </button>
-                    </div>
-                </nav>
-
-                {/* Mobile panel */}
-                <div className={`mobile-panel${mobileOpen ? " open" : ""}`}>
-                    <div className="mobile-inner">
-                        {/* Mobile search */}
-                        <div className="mobile-search">
-                            <Search size={16} color="var(--ink-soft)" />
-                            <input placeholder="Search products, resources…" />
-                        </div>
-
-                        {NAV_ITEMS.map((item) => (
-                            <div className="mobile-nav-item" key={item.label}>
-                                <button
-                                    className={`mobile-nav-btn${mobileExpanded === item.label ? " expanded" : ""}`}
-                                    onClick={() =>
-                                        setMobileExpanded(mobileExpanded === item.label ? null : item.label)
-                                    }
-                                >
-                                    {item.label}
-                                    {item.dropdown && <ChevronDown size={16} />}
-                                </button>
-                                {item.dropdown && (
-                                    <div className={`mobile-sub${mobileExpanded === item.label ? " open" : ""}`}>
-                                        {item.dropdown.map((sub) => (
-                                            <div className="mobile-sub-item" key={sub.label}>
-                                                {sub.label}
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-
-                        <div className="mobile-divider" />
-                        <div className="mobile-bottom">
-                            <div className="mobile-lang">
-                                <Globe size={16} />
-                                English (EN)
-                            </div>
-                            <button className="mobile-cta">
-                                Get a Quote <ArrowRight size={14} />
-                            </button>
-                        </div>
-                    </div>
-                </div>
+      <div className="navbar-root">
+        {/* Utility bar */}
+        <div className={`utility-bar${scrolled ? " scrolled" : ""}`}>
+          <div className="utility-inner">
+            <div className="utility-left">
+              <div className="utility-dot" />
+              Global operations across 40+ countries
             </div>
-        </>
-    );
+            <div className="utility-right">
+              <a className="utility-link" href="#">Contact Sales</a>
+              <a className="utility-link" href="#">Partner Portal</a>
+              <a className="utility-link" href="#">
+                <Globe size={12} /> Global Sites
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Main nav */}
+        <nav className={`nav-main${scrolled ? " scrolled" : ""}`}>
+          <div className="nav-inner">
+
+            {/* Logo */}
+            <a className="logo-wrap" href="/">
+              <NextImage
+                src="/logo.webp"
+                alt="Logo"
+                width={200}
+                height={200}
+                style={{ objectFit: "contain" }}
+                priority
+              />
+            </a>
+
+            {/* Desktop links */}
+            <div className="desktop-links">
+              {NAV_ITEMS.map((item) => (
+                <div
+                  key={item.label}
+                  className="nav-item"
+                  onMouseEnter={() => item.categories && setActiveDropdown(item.label)}
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <button
+                    className={`nav-btn${activeDropdown === item.label ? " active" : ""}`}
+                    onClick={() => !item.categories && window.location.href === item.href ? null : !item.categories && (window.location.href = item.href)}
+                  >
+                    {item.label}
+                    {item.categories && <ChevronDown size={14} />}
+                  </button>
+
+                  {item.categories && (
+                    <div className={`dropdown-panel wide${activeDropdown === item.label ? " open" : ""}`}>
+                      <div className="panel-header">Browse by category</div>
+                      <div className="categories-grid">
+                        {item.categories.map((cat) => (
+                          <div key={cat.title} className="cat-col">
+                            <div className="cat-title">{cat.title}</div>
+                            {cat.items.map((sub) => (
+                              <div 
+                                className="dropdown-item" 
+                                key={sub.label}
+                                onClick={() => window.location.href = sub.href}
+                              >
+                                <div className="drop-dot" />
+                                <div>
+                                  <div className="drop-label">
+                                    {sub.label}
+                                    {sub.badge && (
+                                      <span className="drop-badge">{sub.badge}</span>
+                                    )}
+                                  </div>
+                                  <div className="drop-desc">{sub.desc}</div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                      <div className="panel-footer">
+                        <button className="footer-link">
+                          View all products <ArrowRight size={13} />
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Actions */}
+            <div className="nav-actions">
+              {/* Search */}
+              <div className="search-wrap">
+                <div className={`search-expand${searchOpen ? " open" : ""}`}>
+                  <input
+                    ref={searchRef}
+                    className="search-input"
+                    type="text"
+                    placeholder="Search products, resources…"
+                    value={searchVal}
+                    onChange={(e) => setSearchVal(e.target.value)}
+                    onKeyDown={(e) => e.key === "Escape" && setSearchOpen(false)}
+                  />
+                  <button className="search-submit">
+                    <Search size={14} />
+                  </button>
+                </div>
+                <button
+                  className={`icon-btn${searchOpen ? " active" : ""}`}
+                  onClick={() => setSearchOpen(!searchOpen)}
+                  aria-label="Toggle search"
+                >
+                  {searchOpen ? <X size={17} /> : <Search size={17} />}
+                </button>
+              </div>
+
+              {/* Language */}
+              <button className="lang-btn">
+                <Globe size={14} />
+                EN
+              </button>
+
+              {/* CTA */}
+              <button className="cta-btn">
+                Get a Quote
+                <ArrowRight size={14} />
+              </button>
+            </div>
+
+            {/* Mobile toggle */}
+            <button
+              className="mobile-toggle"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </nav>
+
+        {/* Mobile panel */}
+        <div className={`mobile-panel${mobileOpen ? " open" : ""}`}>
+          <div className="mobile-inner">
+            {/* Mobile search */}
+            <div className="mobile-search">
+              <Search size={16} color="var(--ink-soft)" />
+              <input placeholder="Search products, resources…" />
+            </div>
+
+            {NAV_ITEMS.map((item) => (
+              <div className="mobile-nav-item" key={item.label}>
+                <button
+                  className={`mobile-nav-btn${mobileExpanded === item.label ? " expanded" : ""}`}
+                  onClick={() => {
+                    if (item.categories) {
+                      setMobileExpanded(mobileExpanded === item.label ? null : item.label);
+                    } else {
+                      window.location.href = item.href;
+                    }
+                  }}
+                >
+                  {item.label}
+                  {item.categories && <ChevronDown size={16} />}
+                </button>
+
+                {item.categories && (
+                  <div className={`mobile-sub${mobileExpanded === item.label ? " open" : ""}`}>
+                    {item.categories.map((cat) => (
+                      <div key={cat.title}>
+                        <div className="mobile-cat-title">{cat.title}</div>
+                        {cat.items.map((sub) => (
+                          <div 
+                            className="mobile-sub-item" 
+                            key={sub.label}
+                            onClick={() => window.location.href = sub.href}
+                          >
+                            {sub.label}
+                            {sub.badge && (
+                              <span className="drop-badge">{sub.badge}</span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+
+            <div className="mobile-divider" />
+            <div className="mobile-bottom">
+              <div className="mobile-lang">
+                <Globe size={16} />
+                English (EN)
+              </div>
+              <button className="mobile-cta">
+                Get a Quote <ArrowRight size={14} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
