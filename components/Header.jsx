@@ -13,8 +13,9 @@ const NAV_ITEMS = [
         title: "Alumina Trihydrate (ATH)",
         items: [
           { label: "Sodium Aluminate", desc: "High-purity ATH powders", href: "/sodiumaluminate" },
-          { label: "Fire Retardant Alumina Trihydrate", desc: "Thermal & abrasive grades", href: "#" },
-          { label: "Specialty Alumina", desc: "Custom particle sizes", href: "#" },
+          { label: "Calcined Alumina", desc: "Thermal & abrasive grades", href: "/calcinedalumina" },
+          { label: "Activated Alumina", desc: "Custom particle sizes", href: "/activatedalumina" },
+          { label: "Zirconium Silicate", desc: "Custom particle sizes", href: "/zirconiumsilicate" },
         ],
       },
       {
@@ -35,10 +36,9 @@ const NAV_ITEMS = [
       },
     ],
   },
-  { label: "Contact", href: "#" },
-  { label: "About Us", href: "#" },
-  { label: "Blog", href: "#" },
-  { label: "Careers", href: "#" },
+  { label: "Contact", href: "/contact" },
+  { label: "About Us", href: "/about" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export default function Navbar() {
