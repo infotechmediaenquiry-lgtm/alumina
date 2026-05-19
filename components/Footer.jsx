@@ -27,7 +27,7 @@ export default function Footer() {
         {/* Column 1 */}
         <div>
           <img
-            src="/logo.webp"
+            src="../app/logo.webp"
             alt="Logo"
             className="mb-5 w-40"
           />
