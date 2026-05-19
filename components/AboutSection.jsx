@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { ArrowRight, Award, Users, Globe, } from "lucide-react";
 
 const PILLARS = [
@@ -474,10 +475,10 @@ export default function AboutSection() {
 
             {/* CTA */}
             <div className={`about-cta${visible ? " visible" : ""}`}>
-              <button className="btn-primary">
+              <Link href="/about" className="btn-primary">
                 Our Story
                 <ArrowRight size={15} />
-              </button>
+              </Link>
               <button className="btn-ghost">View Capabilities</button>
             </div>
 

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, CheckCircle, Beaker, Shield, Zap, Phone } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -632,9 +633,9 @@ export default function ZirconiumSilicatePage() {
             Used as opacifier in ceramic industries. High-grade zirconium silicate for refractories, ceramics, foundry coatings, and advanced industrial formulations.
           </p>
           <div className="hero-cta-group">
-            <button className="btn-primary">
+            <Link href="/contact" className="btn-primary">
               Get a Quote <ArrowRight size={16} />
-            </button>
+            </Link>
           </div>
         </div>
         <div className="hero-image">

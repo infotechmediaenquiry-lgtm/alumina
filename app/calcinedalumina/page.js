@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, CheckCircle, Beaker, Shield, Zap, TrendingUp, Download, Phone } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -632,9 +633,9 @@ export default function CalcinedAluminaPage() {
             Used in the manufacture of ceramic tiles, enamel, ceramic frit, glazed tiles, industrial polishing and buffing compounds (polishing green soap), ceramic fibre (insulation), refractories, castables and high alumina cements, technical ceramic components, and kiln furniture.
           </p>
           <div className="hero-cta-group">
-            <button className="btn-primary">
+            <Link href="/contact" className="btn-primary">
               Get a Quote <ArrowRight size={16} />
-            </button>
+            </Link>
           </div>
         </div>
         <div className="hero-image">

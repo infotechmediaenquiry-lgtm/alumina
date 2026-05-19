@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import Link from "next/link";
 import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 
 const SLIDES = [
@@ -562,14 +563,14 @@ export default function HeroSection() {
           </p>
 
           <div className={`hero-cta-row${loaded ? " visible" : ""}`}>
-            <button className="btn-primary">
+            <Link href="/contact" className="btn-primary">
               Contact Us
               <ArrowRight size={16} />
-            </button>
-            <button className="btn-secondary">
+            </Link>
+            {/* <button className="btn-secondary">
               Explore Products
               <ArrowRight size={15} />
-            </button>
+            </button> */}
 
             <div className="hero-stats">
               <div className={`hero-stat${loaded ? " visible" : ""}`}>

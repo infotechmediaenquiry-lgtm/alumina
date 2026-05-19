@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown, Search, Globe, ArrowRight } from "lucide-react";
 import NextImage from "next/image";
+import Link from "next/link";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
@@ -10,28 +11,25 @@ const NAV_ITEMS = [
     label: "Products",
     categories: [
       {
-        title: "Alumina Trihydrate (ATH)",
+        title: "Products",
         items: [
           { label: "Sodium Aluminate", desc: "High-purity ATH powders", href: "/sodiumaluminate" },
           { label: "Calcined Alumina", desc: "Thermal & abrasive grades", href: "/calcinedalumina" },
           { label: "Activated Alumina", desc: "Custom particle sizes", href: "/activatedalumina" },
-          { label: "Zirconium Silicate", desc: "Custom particle sizes", href: "/zirconiumsilicate" },
+
         ],
       },
       {
-        title: "Industry Solutions",
+        title: "Products",
         items: [
-          { label: "Aerospace", desc: "High-performance components", href: "#" },
-          { label: "Industrial", desc: "Heavy-duty applications", href: "#" },
-          { label: "Electronics", desc: "Micro & nano engineering", href: "#", badge: "NEW" },
+          { label: "Alumina Trihydrate", desc: "High-performance components", href: "/aluminatrihydrate" },
+          { label: "Zirconium Silicate", desc: "Custom particle sizes", href: "/zirconiumsilicate" },
         ],
       },
       {
         title: "By Application",
         items: [
-          { label: "Flame Retardants", desc: "FR filler systems", href: "#" },
-          { label: "Polishing & Abrasives", desc: "Surface finish solutions", href: "#" },
-          { label: "Ceramics", desc: "Structural & refractory", href: "#" },
+          { label: "Ceramics", desc: "Structural & refractory", href: "/ceramics" },
         ],
       },
     ],
@@ -681,7 +679,7 @@ export default function Navbar() {
                   </button>
 
                   {item.categories && (
-                    <div 
+                    <div
                       className={`dropdown-panel wide${activeDropdown === item.label ? " open" : ""}`}
                       onMouseEnter={() => setActiveDropdown(item.label)}
                       onMouseLeave={() => setActiveDropdown(null)}
@@ -692,8 +690,8 @@ export default function Navbar() {
                           <div key={cat.title} className="cat-col">
                             <div className="cat-title">{cat.title}</div>
                             {cat.items.map((sub) => (
-                              <div 
-                                className="dropdown-item" 
+                              <div
+                                className="dropdown-item"
                                 key={sub.label}
                                 onClick={() => window.location.href = sub.href}
                               >
@@ -712,11 +710,11 @@ export default function Navbar() {
                           </div>
                         ))}
                       </div>
-                      <div className="panel-footer">
+                      {/* <div className="panel-footer">
                         <button className="footer-link">
                           View all products <ArrowRight size={13} />
                         </button>
-                      </div>
+                      </div> */}
                     </div>
                   )}
                 </div>
@@ -805,8 +803,8 @@ export default function Navbar() {
                       <div key={cat.title}>
                         <div className="mobile-cat-title">{cat.title}</div>
                         {cat.items.map((sub) => (
-                          <div 
-                            className="mobile-sub-item" 
+                          <div
+                            className="mobile-sub-item"
                             key={sub.label}
                             onClick={() => window.location.href = sub.href}
                           >
@@ -829,9 +827,10 @@ export default function Navbar() {
                 <Globe size={16} />
                 English (EN)
               </div>
-              <button className="mobile-cta">
-                Get a Quote <ArrowRight size={14} />
-              </button>
+              <Link href="/contact" className="cta-btn">
+                Get a Quote
+                <ArrowRight size={14} />
+              </Link>
             </div>
           </div>
         </div>

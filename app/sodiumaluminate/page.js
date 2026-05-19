@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, CheckCircle, Beaker, Shield, Zap, TrendingUp, Download, Phone } from "lucide-react";
 import Header from "@/components/Header";
@@ -648,9 +649,9 @@ export default function SodiumAluminatePage() {
             Used in the manufacture of chemicals for paper sizing and water purification (water softening), construction chemicals for fast-setting concrete, and as an environmentally friendly alternative to phosphates in detergents
           </p>
           <div className="hero-cta-group">
-            <button className="btn-primary">
+            <Link href="/contact" className="btn-primary">
               Get a Quote <ArrowRight size={16} />
-            </button>
+            </Link>
           </div>
         </div>
         <div className="hero-image">

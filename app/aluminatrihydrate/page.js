@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -7,7 +7,7 @@ import { ArrowRight, CheckCircle, Beaker, Shield, Zap, TrendingUp, Download, Pho
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-export default function ActivatedAluminaPage() {
+export default function AluminaTrihydratePage() {
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef(null);
 
@@ -168,7 +168,7 @@ export default function ActivatedAluminaPage() {
           position: relative;
           z-index: 1;
           width: 100%;
-          max-width: 380px;
+          max-width: 420px;
           height: 420px;
           border-radius: 12px;
           display: flex;
@@ -179,6 +179,9 @@ export default function ActivatedAluminaPage() {
           margin: 0 auto;
         }
 
+        .hero-image-img {
+          border-radius: 12px !important;
+        }
 
         .specs-section {
           width: 100%;
@@ -624,21 +627,21 @@ export default function ActivatedAluminaPage() {
 
       <section className="product-hero">
         <div className="hero-content">
-          <div className="hero-badge">High-Purity Adsorbent</div>
-          <h1 className="hero-title">Activated Alumina</h1>
+          <div className="hero-badge">High-Purity Flame Retardant</div>
+          <h1 className="hero-title">Alumina Trihydrate</h1>
           <p className="hero-subtitle">
-            Used as Catalyst for petrochemicals for sulphur removal, adsorbent for refrigeration industries, dessicant for dryers and water purifiers.
+            A premium alumina hydrate designed for flame retardant, filler, and refractory applications with reliable thermal stability and consistent particle performance.
           </p>
           <div className="hero-cta-group">
             <Link href="/contact" className="btn-primary">
-              Get a Quote <ArrowRight size={16} />
+              Contact Sales <ArrowRight size={16} />
             </Link>
           </div>
         </div>
         <div className="hero-image">
           <Image
-            src="/Activated-Alumina2.png"
-            alt="Activated Alumina Product"
+            src="/alumina-trihydrate.png"
+            alt="Alumina Trihydrate"
             fill
             style={{ objectFit: "cover" }}
             priority
@@ -653,18 +656,18 @@ export default function ActivatedAluminaPage() {
         <div className="specs-grid">
           <div className="spec-card">
             <div className="spec-icon"><Beaker size={24} /></div>
-            <div className="spec-label">Surface Area</div>
-            <div className="spec-value">180 - 220 m²/g</div>
+            <div className="spec-label">Al₂O₃ Content</div>
+            <div className="spec-value">≥ 65%</div>
           </div>
           <div className="spec-card">
             <div className="spec-icon"><Shield size={24} /></div>
-            <div className="spec-label">Al₂O₃ Content</div>
-            <div className="spec-value">≥ 90%</div>
+            <div className="spec-label">Moisture</div>
+            <div className="spec-value">≤ 3.0%</div>
           </div>
           <div className="spec-card">
             <div className="spec-icon"><Zap size={24} /></div>
             <div className="spec-label">Bulk Density</div>
-            <div className="spec-value">0.95 - 1.15 g/cm³</div>
+            <div className="spec-value">0.35 - 0.45 g/cm³</div>
           </div>
         </div>
       </section>
@@ -677,36 +680,36 @@ export default function ActivatedAluminaPage() {
               <div className="feature-item">
                 <CheckCircle className="feature-icon" />
                 <div className="feature-content">
-                  <h4>High Adsorption Capacity</h4>
-                  <p>Designed for superior moisture and contaminant capture in gas and liquid streams.</p>
+                  <h4>Flame Retardant Performance</h4>
+                  <p>Effective in halogen-free flame retardant systems and polymer compounding.</p>
                 </div>
               </div>
               <div className="feature-item">
                 <CheckCircle className="feature-icon" />
                 <div className="feature-content">
-                  <h4>Thermally Stable</h4>
-                  <p>Excellent performance through repeated regeneration cycles at elevated temperatures.</p>
+                  <h4>Consistent Particle Size</h4>
+                  <p>Uniform fine powder for reliable dispersion and processing behavior.</p>
                 </div>
               </div>
               <div className="feature-item">
                 <CheckCircle className="feature-icon" />
                 <div className="feature-content">
-                  <h4>Low Impurity</h4>
-                  <p>Minimal sodium and silica impurities for reliable industrial use.</p>
+                  <h4>Low Impurities</h4>
+                  <p>Minimal heavy metals and controlled chemistry for sensitive applications.</p>
                 </div>
               </div>
               <div className="feature-item">
                 <CheckCircle className="feature-icon" />
                 <div className="feature-content">
-                  <h4>Granular Consistency</h4>
-                  <p>Uniform bead size for efficient bed packing and pressure drop control.</p>
+                  <h4>Thermal Stability</h4>
+                  <p>Stable dehydration characteristics for high-temperature refractory formulations.</p>
                 </div>
               </div>
               <div className="feature-item">
                 <CheckCircle className="feature-icon" />
                 <div className="feature-content">
                   <h4>Versatile Uses</h4>
-                  <p>Ideal for desiccant, dehumidification, fluoride removal, and catalyst support systems.</p>
+                  <p>Ideal for polymers, coatings, ceramics, and cementitious fillers.</p>
                 </div>
               </div>
             </div>
@@ -714,21 +717,19 @@ export default function ActivatedAluminaPage() {
           <div className="features-info">
             <div className="info-box">
               <h3>🔬 Chemical Formula</h3>
-              <p>Al₂O₃ · nH₂O</p>
+              <p>Al₂O₃ · 3H₂O</p>
             </div>
             <div className="info-box">
               <h3>📦 Available Packaging</h3>
-              <p>25 kg bags, 500 kg sacks, 1000 kg IBCs, and bulk tanker shipments.
-              </p>
+              <p>25 kg bags, 50 kg bags, jumbo bags, and bulk shipments available.</p>
             </div>
             <div className="info-box">
-              <h3>🌍 Global Availability</h3>
-              <p>Quality material produced to meet regional and export market demands.</p>
+              <h3>🌍 Market Applications</h3>
+              <p>Used in flame retardant plastics, construction materials, ceramics, and specialty fillers.</p>
             </div>
             <div className="info-box">
               <h3>📋 Certifications</h3>
-              <p>ISO 9001:2015, ISO 14001, REACH compliant, and customer-specific quality reporting.
-              </p>
+              <p>Produced under ISO quality systems with customer-specific testing and reporting.</p>
             </div>
           </div>
         </div>
@@ -739,44 +740,44 @@ export default function ActivatedAluminaPage() {
         <h2 className="section-title">Industry Applications</h2>
         <div className="applications-grid">
           <div className="app-card">
-            <div className="app-icon">💧</div>
-            <h4>Dehydration</h4>
-            <p>Reliable drying agent for compressed air and gas streams.</p>
-          </div>
-          <div className="app-card">
-            <div className="app-icon">🧊</div>
-            <h4>Air Drying</h4>
-            <p>High-capacity desiccant for refrigeration, HVAC, and process gas systems.</p>
-          </div>
-          <div className="app-card">
-            <div className="app-icon">⚗️</div>
-            <h4>Catalyst Support</h4>
-            <p>Stable support media for adsorption and catalytic reactions.</p>
-          </div>
-          <div className="app-card">
-            <div className="app-icon">🏭</div>
-            <h4>Water Treatment</h4>
-            <p>Removes fluoride, arsenic, and other impurities from drinking and industrial water.</p>
-          </div>
-          <div className="app-card">
             <div className="app-icon">🔥</div>
-            <h4>Heat Recovery</h4>
-            <p>Regenerable desiccant for thermal energy storage applications.</p>
+            <h4>Flame Retardants</h4>
+            <p>Extends fire resistance in plastics, rubbers, and coatings.</p>
           </div>
           <div className="app-card">
-            <div className="app-icon">🛡️</div>
-            <h4>Air Separation</h4>
-            <p>Purification media for oxygen, nitrogen, and noble gas production.</p>
+            <div className="app-icon">🏗️</div>
+            <h4>Refractories</h4>
+            <p>Improves strength and thermal behavior in refractory castables.</p>
           </div>
           <div className="app-card">
-            <div className="app-icon">💨</div>
-            <h4>Gas Adsorption</h4>
-            <p>Effective capture of moisture and trace contaminants from process gases.</p>
+            <div className="app-icon">🧪</div>
+            <h4>Ceramics</h4>
+            <p>Used as a raw material for high-quality ceramic products.</p>
+          </div>
+          <div className="app-card">
+            <div className="app-icon">🧱</div>
+            <h4>Fillers</h4>
+            <p>Enhances mechanical and thermal properties in composite systems.</p>
+          </div>
+          <div className="app-card">
+            <div className="app-icon">🩹</div>
+            <h4>Coatings</h4>
+            <p>Supports abrasion resistance and opacity in specialty coatings.</p>
           </div>
           <div className="app-card">
             <div className="app-icon">♻️</div>
-            <h4>Environmental</h4>
-            <p>Used in solvent recovery, VOC adsorption, and emission control systems.</p>
+            <h4>Polymers</h4>
+            <p>Compatible with PVC, rubber, and thermoplastic compounds.</p>
+          </div>
+          <div className="app-card">
+            <div className="app-icon">⚙️</div>
+            <h4>Industrial</h4>
+            <p>Suitable for adhesives, sealants, and high-temperature insulation.</p>
+          </div>
+          <div className="app-card">
+            <div className="app-icon">🧊</div>
+            <h4>Thermal Management</h4>
+            <p>Improves heat retention and thermal buffering in engineered systems.</p>
           </div>
         </div>
       </section>
@@ -796,63 +797,57 @@ export default function ActivatedAluminaPage() {
             </thead>
             <tbody>
               <tr>
-                <td>Aluminum Oxide (Al₂O₃)</td>
+                <td>Aluminium Oxide (Al₂O₃)</td>
                 <td>% w/w</td>
-                <td>≥ 90</td>
+                <td>≥ 65</td>
                 <td>ICP Analysis</td>
-              </tr>
-              <tr>
-                <td>Surface Area</td>
-                <td>m²/g</td>
-                <td>180 - 220</td>
-                <td>BET Analysis</td>
-              </tr>
-              <tr>
-                <td>Bulk Density</td>
-                <td>g/cm³</td>
-                <td>0.95 - 1.15</td>
-                <td>ASTM D1895</td>
-              </tr>
-              <tr>
-                <td>Apparent Density</td>
-                <td>g/cm³</td>
-                <td>1.75 - 2.10</td>
-                <td>ASTM C208</td>
               </tr>
               <tr>
                 <td>Moisture Content</td>
                 <td>% w/w</td>
-                <td>≤ 6</td>
+                <td>≤ 3.0</td>
                 <td>ISO 787-2</td>
+              </tr>
+              <tr>
+                <td>Bulk Density</td>
+                <td>g/cm³</td>
+                <td>0.35 - 0.45</td>
+                <td>ASTM D1895</td>
+              </tr>
+              <tr>
+                <td>Ignition Loss</td>
+                <td>% w/w</td>
+                <td>≤ 0.5</td>
+                <td>ISO 3262</td>
               </tr>
               <tr>
                 <td>pH (10% slurry)</td>
                 <td>-</td>
-                <td>7.0 - 8.5</td>
+                <td>5.5 - 7.5</td>
                 <td>pH Meter</td>
               </tr>
               <tr>
-                <td>Hardness</td>
-                <td>Mohs</td>
-                <td>7 - 8</td>
-                <td>ASTM D2488</td>
+                <td>Particle Size</td>
+                <td>µm</td>
+                <td>5 - 15</td>
+                <td>Laser Diffraction</td>
               </tr>
               <tr>
                 <td>Loss on Ignition</td>
                 <td>% w/w</td>
-                <td>&lt; 1.0</td>
+                <td>≤ 1.0</td>
                 <td>ISO 3262</td>
               </tr>
               <tr>
                 <td>Sodium Oxide (Na₂O)</td>
                 <td>% w/w</td>
-                <td>&lt; 1.5</td>
+                <td>≤ 0.5</td>
                 <td>ICP-OES</td>
               </tr>
               <tr>
                 <td>Silica (SiO₂)</td>
                 <td>% w/w</td>
-                <td>&lt; 1.0</td>
+                <td>≤ 1.0</td>
                 <td>ICP-OES</td>
               </tr>
             </tbody>
@@ -862,16 +857,16 @@ export default function ActivatedAluminaPage() {
 
       <section className="cta-section">
         <div className="cta-content">
-          <h2>Ready to Improve Process Efficiency?</h2>
+          <h2>Ready to Source High-Quality Alumina Trihydrate?</h2>
           <p>
-            Contact our team for tailored activated alumina solutions designed for your dehydration, filtration, or catalyst support needs.
+            Reach out to our sales team for tailored pricing, packaging, and shipping solutions that match your production requirements.
           </p>
           <div className="cta-buttons">
             <button className="btn-primary">
               <Phone size={16} /> Contact Sales
             </button>
             <button className="btn-secondary">
-              <ArrowRight size={16} /> View More Products
+              <ArrowRight size={16} /> View Our Products
             </button>
           </div>
         </div>
